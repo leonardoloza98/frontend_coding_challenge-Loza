@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import 'react-toastify/dist/ReactToastify.css';
 import RenderField from "./RenderField";
 import './RenderForm.css';
@@ -20,6 +21,10 @@ const RenderForm = ({dataForm, title}) => {
             return
         }
         toast.success("Se ha enviado el formulario correctamente", toastProps);
+        navigate('/');
+    }
+    
+    const handleOnClickBack = () => {
         navigate('/');
     }
 
@@ -46,10 +51,10 @@ const RenderForm = ({dataForm, title}) => {
 
     return(
         <div className="form-container">
-            <div className="form-title">{title}</div>
+            <div className="form-title"><ArrowBackIosIcon className='icon-go-back' onClick={handleOnClickBack}/>{title}</div>
             {dataForm.length && dataForm?.map(fieldForm => {
                 return(
-                    <div key={fieldForm.index} style={{display:'flex', justifyContent:'center', alignItems:'center', width: '100%'}}>
+                    <div key={fieldForm.index} className="render-field">
                         <RenderField field={fieldForm} formErrors={formErrors} form={form} setForm={setForm}/>
                     </div>
                 )

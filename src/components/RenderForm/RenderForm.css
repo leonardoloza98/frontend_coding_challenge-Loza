@@ -8,8 +8,22 @@
 .form-title{
     font-size: x-large;
     font-weight: 500;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.icon-go-back:hover{
+    cursor: pointer
+}
+
+.render-field{
+    display:'flex'; 
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
 .button-submit-form{
     margin-top: 10px;
     padding: 10px 20px;

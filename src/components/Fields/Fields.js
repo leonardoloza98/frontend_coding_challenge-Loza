@@ -27,7 +27,7 @@ export const InputForm = ({label, setForm}) => {
     }
     return(
         <div className="input-container">
-            <label style={{fontWeight:500, marginBottom: '5px', textAlign:'center'}}>{label}</label>
+            <label className='label-form'>{label}</label>
             <input className="input-form" type='text' value={text} onChange={handleOnChangeInput}></input>
         </div>
     )
@@ -44,7 +44,7 @@ export const SelectForm = ({options, label, form, setForm}) => {
     };
     return (
       <div className="select-form">
-        <label style={{ fontWeight: 500, marginBottom: '5px', textAlign:'center' }}>{label}</label>
+        <label className='label-form'>{label}</label>
         {inputOptions.map((option) => (
           <div key={option.label}>
             <input

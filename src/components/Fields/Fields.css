@@ -24,3 +24,9 @@
     font-size:larger;
     padding: 5px;
 }
+
+.label-form{
+    font-weight:500;
+    margin-bottom: 5px;
+    text-align: center;
+}
