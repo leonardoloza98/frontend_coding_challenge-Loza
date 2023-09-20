@@ -5,12 +5,21 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { toast } from 'react-toastify';
 
 const FormItem = ({id, title, description}) => {
     const navigate = useNavigate();
 
     const handleOnClickForm = () => {
         navigate(`/form/${id}`, {state: {title}});
+    }
+
+    const handleOnClickClear = () => {
+      const toastProps = {autoClose: 3000, closeButton: false};
+      const form = localStorage.getItem(title);
+      if(!form) return
+      localStorage.removeItem(title);
+      toast.success("The form has been successfully cleaned", toastProps);
     }
 
     const item = (
@@ -28,6 +37,7 @@ const FormItem = ({id, title, description}) => {
             </CardContent>
             <CardActions>
               <Button size="small" onClick={handleOnClickForm}>Complete</Button>
+              <Button size="small" style={{marginLeft:'auto'}} onClick={handleOnClickClear}>Clear form</Button>
             </CardActions>
       </>
     )

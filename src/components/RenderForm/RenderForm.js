@@ -16,11 +16,11 @@ const RenderForm = ({dataForm, title, formDataCompleted}) => {
         const errors = checkErrors(form);
         const toastProps = {autoClose: 3000, closeButton: false};
         if(errors) {
-            toast.error("Debe completar todos los campos", toastProps);
+            toast.error("You must complete all fields", toastProps);
             return
         }
         localStorage.setItem(title, JSON.stringify(form));
-        toast.success("Se ha enviado el formulario correctamente", toastProps);
+        toast.success("The form has been saved successfully", toastProps);
         handleOnClickBack();
     }
 
