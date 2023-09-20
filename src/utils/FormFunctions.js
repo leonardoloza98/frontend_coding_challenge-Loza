@@ -1,19 +1,14 @@
-import {forms} from "./Forms";
-
-const mockedForms = [
-    {
-        id: '1',
-        title: 'A fancy form'
-    },
-    {
-        id: '2',
-        title: 'Installation form'
-    }
-]
-
+import {forms} from "./constants";
 
 export const getTitleForms = () => {
-    return mockedForms
+    const formsTitles = forms.map((form)=>{
+        return{
+            id: form.id,
+            title: form.name,
+            description: form.description
+        }
+    })
+    return formsTitles
 }
 
 export const getFormById = (id) => {

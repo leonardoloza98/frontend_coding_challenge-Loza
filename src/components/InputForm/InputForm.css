@@ -1,0 +1,16 @@
+.input-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0px;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border-bottom: 3px solid rgb(140, 140, 212);
+}
+
+.label-form{
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    padding-bottom: 15px;
+    margin: 5px 0px;
+}

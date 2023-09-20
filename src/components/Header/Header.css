@@ -3,11 +3,16 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 15px;
+    margin: 10px 40px ;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border-bottom: 4px solid rgb(140, 140, 212)
 }
 
 .title-header{
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 45px;
     padding-bottom: 10px;
 }
 

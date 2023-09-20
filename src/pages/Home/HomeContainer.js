@@ -3,7 +3,7 @@ import ListOfForms from "../../components/ListOfForms/ListOfForms";
   
 const HomeContainer = () => {
     return(
-        <div className="home-cointainer">
+        <div>
             <Header/>
             <ListOfForms/>
         </div>

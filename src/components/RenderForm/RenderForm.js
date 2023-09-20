@@ -1,16 +1,15 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import 'react-toastify/dist/ReactToastify.css';
+import Button from '@mui/material/Button';
 import RenderField from "./RenderField";
+import { types } from "../../utils/constants";
+import 'react-toastify/dist/ReactToastify.css';
 import './RenderForm.css';
-import { types } from "../../utils/Forms";
 
-const RenderForm = ({dataForm, title}) => {
-    const [form, setForm] = useState({});
-    const [formErrors, setFormErrors] = useState({});
+const RenderForm = ({dataForm, title, formDataCompleted}) => {
+    const [form, setForm] = useState(formDataCompleted);
     const navigate = useNavigate();
 
     const handleOnClickSubmit = () => {
@@ -20,46 +19,54 @@ const RenderForm = ({dataForm, title}) => {
             toast.error("Debe completar todos los campos", toastProps);
             return
         }
+        localStorage.setItem(title, JSON.stringify(form));
         toast.success("Se ha enviado el formulario correctamente", toastProps);
-        navigate('/');
+        handleOnClickBack();
     }
-    
+
     const handleOnClickBack = () => {
         navigate('/');
     }
-
+    
     const checkErrors = (form)=>{
-        let hasErrors = false
+        let hasErrors = false;
         for(let field of dataForm){
-            if(field.type!==types.group) {
+            if(field.type !== types.group) {
                 if(!form[field.label] || form[field.label] === ''){
-                hasErrors = true
-                setFormErrors(prevState => ({
-                    ...prevState,
-                   [field.label]: true
-                }))
-                }else{
-                    setFormErrors(prevState => ({
-                        ...prevState,
-                    [field.label]: false
-                    }))
+                    hasErrors = true
                 }
             }
         }
         return hasErrors
     }
 
+    useEffect(()=>{
+        if(formDataCompleted){
+            setForm(formDataCompleted)
+        }
+    },[formDataCompleted])
+
     return(
         <div className="form-container">
-            <div className="form-title"><ArrowBackIosIcon className='icon-go-back' onClick={handleOnClickBack}/>{title}</div>
+            <div className="form-title">
+                {title}
+            </div>
             {dataForm.length && dataForm?.map(fieldForm => {
                 return(
                     <div key={fieldForm.index} className="render-field">
-                        <RenderField field={fieldForm} formErrors={formErrors} form={form} setForm={setForm}/>
+                        <RenderField 
+                        field={fieldForm} 
+                        form={form} 
+                        setForm={setForm}
+                        dataCompleted={formDataCompleted && formDataCompleted[fieldForm?.label]?.value}
+                        />
                     </div>
                 )
             })}
-            <button className="button-submit-form" onClick={handleOnClickSubmit}>Submit</button>
+            <div className="form-buttons">
+                <Button variant="outlined" className="button-submit-form" color="error" size="large" onClick={handleOnClickBack}>Cancel</Button>
+                <Button variant="outlined" className="button-submit-form" color="success" size="large" onClick={handleOnClickSubmit}>Save</Button>
+            </div>
         </div>
     )
 }

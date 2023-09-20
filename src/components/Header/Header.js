@@ -2,9 +2,9 @@ import './Header.css';
 
 const Header = () => {
     return(
-        <div className='header-container'>
-            <div className='title-header'>Lista de formularios</div>
-            <span className='subtitle-header'>Seleccioná el formulario que desees completar</span>
+        <div className="header-container">
+            <div className="title-header">List of forms</div>
+            <span className="subtitle-header">Select the one you want to complete or search it</span>
         </div>
     )
 }

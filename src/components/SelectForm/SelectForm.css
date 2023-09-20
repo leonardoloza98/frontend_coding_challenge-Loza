@@ -1,0 +1,7 @@
+.select-container{
+    margin: 5px 0px;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border-bottom: 3px solid rgb(140, 140, 212)
+}
